@@ -31,7 +31,7 @@ function selectChat(chat) {
         :key="chat.id"
         :chat="chat"
         :isActive="chat.id === activeChatId"
-        @click="selectChat(chat.id)"
+        @click="selectChat(chat)"
       />
     </ul>
   </div>
@@ -39,8 +39,7 @@ function selectChat(chat) {
 
 <style scoped>
 .chat-sidebar {
-  width: 70px;
-  background-color: #d9d9d9;
+  background-color: var(--dark);
 }
 
 .chat-list {

@@ -25,24 +25,24 @@ const props = defineProps({
   display: flex;
   align-items: center;
   flex-direction: center;
-  padding: 10px;
+  padding: 0.6rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .chat-item:hover {
-  background-color: #fe0032; /* Hover effect */
+  background-color: var(--red); /* Hover effect */
 }
 
 .chat-item.active {
-  background-color: #fe0032; /* Active chat highlight */
+  background-color: var(--red); /* Active chat highlight */
 }
 
 .avatar {
-  width: 45px;
-  height: 45px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  background: #e8e8e8;
+  background: var(--light-grey);
   display: flex;
   align-items: center;
   justify-content: center;

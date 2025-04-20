@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import ChatSidebar from './components/ChatSidebar.vue';
-import ChatWindow from './components/ChatWindow.vue';
+import OperatorInterface from './components/OperatorInterface.vue';
 
 // --- State ---
 
@@ -28,14 +28,14 @@ const chatList = ref([
 ]);
 
 // Reactive variable to store the ID of the currently selected chat
-const selectedChatId = ref(null); // Initially no chat is selected
+const selectedChat = ref(null); // Initially no chat is selected
 
 // --- Methods ---
 
 // Function to update the selected chat ID
-function handleSelectChat(chatId) {
-  console.log('Selected Chat ID:', chatId);
-  selectedChatId.value = chatId;
+function handleSelectChat(chat) {
+  console.log('Selected Chat ID:', chat.id);
+  selectedChat.value = chat;
   // Fetch chat details
 }
 
@@ -48,8 +48,12 @@ onMounted(() => {
 
 <template>
   <div class="app-layout">
-    <ChatSidebar :chats="chatList" :activeChatId="selectedChatId" @select-chat="handleSelectChat" />
-    <ChatWindow :chatId="selectedChatId" />
+    <ChatSidebar
+      :chats="chatList"
+      :activeChatId="selectedChat ? selectedChat.id : selectedChat"
+      @select-chat="handleSelectChat"
+    />
+    <OperatorInterface :chat="selectedChat" />
   </div>
 </template>
 
@@ -58,11 +62,11 @@ onMounted(() => {
 .app-layout {
   display: flex;
   height: 100vh; /* Full viewport height */
-  background-color: #f5f5f5;
-  color: #d9d9d9;
+  background-color: var(--whitish);
+  color: var(--grey);
 }
 
 /* Ensure components take up space */
 /* ChatSidebar will have its own width */
-/* ChatWindow should grow */
+/* OperatorInterface should grow */
 </style>
